@@ -58,7 +58,7 @@ int main() {
     string names[] = {"Recursive Merge Sort", "Iterative Merge Sort"};
 
     for(int length = lowerLimit; length <= upperLimit; length = length + skips){
-        //COMMENT OUT THIS ONE IF YOU WANT. IT JUST SHOWS YOU
+        //COMMENT OUT THIS ONE IF YOU WANT. IT JUST SHOWS YOU THE NUMBER OF ELEMENTS IN THE TESTING LIST
         cout << "For a list of " << length << " elements, " <<endl;
         for(int i = 0; i < funcsLen; i++) {
             duration<double> duration[5];
