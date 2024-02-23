@@ -1,3 +1,7 @@
+/*
+    Special thanks to Erandathee
+*/
+
 #include <iostream>
 #include <vector>
 #include <random>
