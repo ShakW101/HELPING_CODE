@@ -68,38 +68,38 @@ struct node *findMin(struct node* root){
 // Deleting a node
 // Deleting a node
 struct node *deleteNode(struct node *root, int key) {
-    if(root == NULL)
+    if (root == NULL)
         return root;
-    else if (key < root->key)
+
+    //search for the node to be deleted
+    if (key < root->key)
         root->left = deleteNode(root->left, key);
     else if (key > root->key)
         root->right = deleteNode(root->right, key);
-    else
-    {
-        //no child
-        if(root->left == NULL && root->right == NULL){
-            cout<<"Successfully deleted leaf node "<<root->key<<endl;
+    else {
+        //found node!
+
+        //delete node if it only has one or no child
+        if (root->left == NULL) {
+            //cout<<"GOt here"<<endl;
+            struct node *temp = root->right;
             delete root;
-            return NULL;
+            return temp;
+        } else if (root->right == NULL) {
+            struct node *temp = root->left;
+            delete root;
+            return temp;
         }
-            //one child
-        else if (root->left == NULL){
-            struct node *temp = root;
-            root = root->right;
-            delete temp;
-        }
-        else if(root->right == NULL){
-            struct node *temp = root;
-            root = root->left;
-            delete temp;
-        }
-            //3 kids
-        else{
-            struct node *temp = findMin(root->right);
-            cout << temp->key<<endl;
-            root->key = temp->key;
-            root->right = deleteNode(root->right, temp->key);
-        }
+
+        //for node with two children, get the minimum value in right subtree
+        //will use another function to recursively do this
+        struct node *temp = findMin(root->right);
+
+        //copy that value to the node
+        root->key = temp->key;
+
+        //delete the duplicate node in right subtree
+        root->right = deleteNode(root->right, temp->key);
     }
     return root;
 }
