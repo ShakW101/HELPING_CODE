@@ -2,6 +2,8 @@
     Special thanks to Erandathee
 */
 
+//author Shakthi Weerawansa
+
 #include <iostream>
 #include <vector>
 #include <random>
